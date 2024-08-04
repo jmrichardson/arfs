@@ -1692,7 +1692,7 @@ def _create_shadow(X_train):
     """
     X_shadow = X_train.copy()
     for c in X_shadow.columns:
-        np.random.shuffle(X_shadow[c].values)
+        X_shadow[c] = np.random.permutation(X_shadow[c].values)
     # Rename the shadow variables
     shadow_names = [f"ShadowVar{i+1}" for i in range(X_train.shape[1])]
     X_shadow.columns = shadow_names
